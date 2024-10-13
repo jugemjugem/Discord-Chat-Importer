@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Discord_Channel_Importer.Utilities
@@ -10,8 +11,8 @@ namespace Discord_Channel_Importer.Utilities
 		/// </summary>
 		public static async Task<string> GetTextFromUriAsync(Uri uri)
 		{
-			using var client = new System.Net.WebClient();	
-			return await client.DownloadStringTaskAsync(uri);	
+			using var client = new HttpClient();
+			return await client.GetStringAsync(uri);
 		}
 	}
 }
